@@ -19,11 +19,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.2", "3.3"]
+        ruby: ["3.2", "3.3", "3.4"]
         gemfile:
-          - Gemfile
-          - gemfiles/7_1.gemfile
           - gemfiles/7_0.gemfile
+          - gemfiles/7_1.gemfile
+          - gemfiles/7_2.gemfile
+          - gemfiles/8_0.gemfile
+        exclude:
+          - ruby-version: '3.4'
+            gemfile: 'gemfiles/7_0.gemfile'
 
     steps:
       - uses: actions/checkout@v2.4.0
